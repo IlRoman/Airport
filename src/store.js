@@ -1,6 +1,16 @@
-import { createStore } from 'redux';
-import reducer from './redux/reducers'
+import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk';
+import flightsReducer from './redux/reducers'
 
-const store = createStore(reducer)
+const reducer = combineReducers({
+    flightsList: flightsReducer,
+})
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(
+    reducer,
+    composeEnhancers(applyMiddleware(thunk))
+);
 
 export default store;
