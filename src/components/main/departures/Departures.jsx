@@ -14,13 +14,15 @@ const Departures = (flightsList) => {
         let arr = Array(flightsList.flightsList.length).fill('0')
         return (
             arr.map((element, index) => {
-                console.log(element)
                 return (
                     <tr key={Math.random()}>
                         <td>{getTerminalLogo(flightsList.flightsList[index].term)}</td>
                         <td>{getTime(flightsList.flightsList[index].timeToStand)}</td>
-                        <td>{flightsList.flightsList[index]['airportToID.city']}</td>
-                        <td>{flightsList.flightsList[index].status}</td>
+                        <td>{flightsList.flightsList[index]['airportToID.city_en']}</td>
+                        <td>{flightsList.flightsList[index].status === 'CX'
+                            ? 'Cancelled'
+                            : flightsList.flightsList[index].status
+                        }</td>
                         <td className="logo-container">
                             <img
                                 className="logo"

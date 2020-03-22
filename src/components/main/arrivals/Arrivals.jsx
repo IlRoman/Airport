@@ -18,8 +18,11 @@ const Arrivals = (flightsList) => {
                     <tr key={Math.random()}>
                         <td>{getTerminalLogo(flightsList.flightsList[index].term)}</td>
                         <td>{getTime(flightsList.flightsList[index].timeLandCalc)}</td>
-                        <td>{flightsList.flightsList[index]['airportFromID.city']}</td>
-                        <td>{flightsList.flightsList[index].status}</td>
+                        <td>{flightsList.flightsList[index]['airportFromID.city_en']}</td>
+                        <td>{flightsList.flightsList[index].status === 'CX'
+                            ? 'Cancelled'
+                            : flightsList.flightsList[index].status
+                        }</td>
                         <td className="logo-container">
                             <img
                                 className="logo"

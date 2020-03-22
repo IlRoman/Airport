@@ -16,7 +16,7 @@ export const filterArrivals = createSelector(
             return elements.body.arrival
         } else {
             return elements.body.arrival.filter(elem => {
-                return elem['airportFromID.city'] === text ||
+                return elem['airportFromID.city_en'] === text ||
                     elem.airline.en.name === text ||
                     elem.codeShareData[0].codeShare === text
             })
@@ -33,7 +33,7 @@ export const filterDepartures = createSelector(
         } else {
             return elements.body.departure.filter(elem => {
                 console.log(elem)
-                return elem['airportToID.city'] === text ||
+                return elem['airportToID.city_en'] === text ||
                     elem.airline.en.name === text ||
                     elem.codeShareData[0].codeShare === text
             })
