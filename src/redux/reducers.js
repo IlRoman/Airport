@@ -1,10 +1,14 @@
-import { FLIGHTS_LIST_RECEIVED } from './actions'
+import { FLIGHTS_LIST_RECEIVED, GET_TEXT } from './actions'
 
 const defaultState = {
-    flightsList: {},
+    flightsList: '',
 }
 
-const flightsReducer = (state = defaultState, action) => {
+const defaultTextState = {
+    text: ''
+}
+
+export const flightsReducer = (state = defaultState, action) => {
     switch (action.type) {
         case FLIGHTS_LIST_RECEIVED:
             return {
@@ -16,4 +20,14 @@ const flightsReducer = (state = defaultState, action) => {
     }
 }
 
-export default flightsReducer;
+export const textReducer = (state = defaultTextState, action) => {
+    switch (action.type) {
+        case GET_TEXT:
+            return {
+                ...state,
+                text: action.payload.text,
+            }
+        default:
+            return state
+    }
+}

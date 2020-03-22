@@ -10,23 +10,25 @@ const Departures = (flightsList) => {
     }
 
     const showDepartures = () => {
-        let arr = Array(flightsList.flightsList.body.departure.length).fill('0')
+        if (flightsList.flightsList === '') return <tr><td>NO RESULTS</td></tr>
+        let arr = Array(flightsList.flightsList.length).fill('0')
         return (
             arr.map((element, index) => {
+                console.log(element)
                 return (
                     <tr key={Math.random()}>
-                        <td>{getTerminalLogo(flightsList.flightsList.body.departure[index].term)}</td>
-                        <td>{getTime(flightsList.flightsList.body.departure[index].timeToStand)}</td>
-                        <td>{flightsList.flightsList.body.departure[index]['airportToID.city']}</td>
-                        <td>{flightsList.flightsList.body.departure[index].status}</td>
+                        <td>{getTerminalLogo(flightsList.flightsList[index].term)}</td>
+                        <td>{getTime(flightsList.flightsList[index].timeToStand)}</td>
+                        <td>{flightsList.flightsList[index]['airportToID.city']}</td>
+                        <td>{flightsList.flightsList[index].status}</td>
                         <td className="logo-container">
                             <img
                                 className="logo"
-                                src={getPicture(flightsList.flightsList.body.departure[index].airline.en.name)
+                                src={getPicture(flightsList.flightsList[index].airline.en.name)
                                 }></img>
-                            <div>{flightsList.flightsList.body.departure[index].airline.en.name}</div>
+                            <div>{flightsList.flightsList[index].airline.en.name}</div>
                         </td>
-                        <td>{flightsList.flightsList.body.departure[index].codeShareData[0].codeShare}</td>
+                        <td>{flightsList.flightsList[index].codeShareData[0].codeShare}</td>
                     </tr>
                 )
             })
@@ -59,9 +61,9 @@ const Departures = (flightsList) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {flightsList.flightsList.body
+                    {flightsList.flightsList
                         ? showDepartures()
-                        : <tr><td>efw</td></tr>}
+                        : <tr><td>NO RESULTS</td></tr>}
                 </tbody>
             </table>
         </div>

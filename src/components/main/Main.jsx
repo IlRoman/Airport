@@ -3,12 +3,27 @@ import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import Arrivals from './arrivals/Arrivals';
 import Departures from './departures/Departures';
 import { connect } from 'react-redux';
-import { getFlightsList } from '../../redux/actions'
+import { getFlightsList, getText } from '../../redux/actions'
+import { filterArrivals, filterDepartures, textSelector } from '../../redux/selectors'
 import './main.scss'
 
 class Main extends React.Component {
+    state = {
+        text: '',
+    }
+
     componentDidMount() {
         this.props.getFlightsList()
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            text: event.target.value
+        })
+    }
+
+    onSubmit = () => {
+        this.props.getText(this.state.text)
     }
 
     render() {
@@ -16,8 +31,18 @@ class Main extends React.Component {
             <div className="page">
                 <div id="title">SEARCH FLIGHT</div>
                 <div id="search-area">
-                    <input id="search-area__input" type="text" placeholder={`airline, destination or flight#`} />
-                    <button id="search-button">SEARCH</button>
+                    <input
+                        id="search-area__input"
+                        type="text"
+                        name="text"
+                        placeholder={`airline, destination or flight#`}
+                        value={this.state.text}
+                        onChange={this.handleChange}
+                    />
+                    <button
+                        id="search-button"
+                        onClick={this.onSubmit}
+                    >SEARCH</button>
                 </div>
                 <BrowserRouter>
                     <Switch>
@@ -39,14 +64,14 @@ class Main extends React.Component {
                     <Switch>
                         <Route path="/arrivals">
                             <Arrivals
-                                flightsList={this.props.flightsList}
+                                flightsList={this.props.flightsListArrivals}
                             />
                         </Route>
                     </Switch>
                     <Switch>
                         <Route path="/departures">
                             <Departures
-                                flightsList={this.props.flightsList}
+                                flightsList={this.props.filterDepartures}
                             />
                         </Route>
                     </Switch>
@@ -58,12 +83,15 @@ class Main extends React.Component {
 
 const mapState = state => {
     return {
-        flightsList: state.flightsList.flightsList
+        flightsListArrivals: filterArrivals(state),
+        filterDepartures: filterDepartures(state),
+        text: textSelector(state),
     }
 }
 
 const mapDispatch = {
     getFlightsList,
+    getText,
 }
 
 export default connect(mapState, mapDispatch)(Main)
