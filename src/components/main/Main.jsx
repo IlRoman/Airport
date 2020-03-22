@@ -29,20 +29,25 @@ class Main extends React.Component {
     render() {
         return (
             <div className="page">
-                <div id="title">SEARCH FLIGHT</div>
-                <div id="search-area">
-                    <input
-                        id="search-area__input"
-                        type="text"
-                        name="text"
-                        placeholder={`airline, destination or flight#`}
-                        value={this.state.text}
-                        onChange={this.handleChange}
-                    />
-                    <button
-                        id="search-button"
-                        onClick={this.onSubmit}
-                    >SEARCH</button>
+                <div className="search-and-button">
+                    <div id="title">SEARCH FLIGHT</div>
+                    <div className="search-area">
+                        <div id="input-area">
+                            <i className="fas fa-search"></i>
+                            <input
+                                id="search-area__input"
+                                type="text"
+                                name="text"
+                                placeholder={`airline, destination or flight#`}
+                                value={this.state.text}
+                                onChange={this.handleChange}
+                            />
+                        </div>
+                        <button
+                            id="search-button"
+                            onClick={this.onSubmit}
+                        >SEARCH</button>
+                    </div>
                 </div>
                 <BrowserRouter>
                     <Switch>
@@ -50,13 +55,15 @@ class Main extends React.Component {
                             <div>
                                 <Link to="/departures">
                                     <button className="btn disabled btn-departures">
-                                        Departures
-                                </button>
+                                        <i className="fas fa-plane-departure"></i>
+                                        <span className="nearIcon">Departures</span>
+                                    </button>
                                 </Link>
                                 <Link to="/arrivals">
                                     <button className="btn active btn-arrivals">
-                                        Arrivals
-                                </button>
+                                        <i className="fas fa-plane-arrival"></i>
+                                        <span className="nearIcon">Arrivals</span>
+                                    </button>
                                 </Link>
                             </div>
                         </Route>

@@ -42,13 +42,15 @@ const Arrivals = (flightsList) => {
             <div className="container">
                 <Link to="/arrivals">
                     <button className="btn active btn-arrivals">
-                        Arrivals
-                </button>
+                        <i className="fas fa-plane-arrival"></i>
+                        <span className="nearIcon">Arrivals</span>
+                    </button>
                 </Link>
                 <Link to="/departures">
                     <button className="btn disabled btn-departures">
-                        Departures
-                </button>
+                        <i className="fas fa-plane-departure"></i>
+                        <span className="nearIcon">Departures</span>
+                    </button>
                 </Link>
             </div>
             <table className="table">
