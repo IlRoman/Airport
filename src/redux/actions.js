@@ -33,8 +33,8 @@ export const getText = (text) => {
     return action;
 }
 
-export const filterArrivals = () => {
-    const thunkAction = function (dispatch) {
+// export const filterArrivals = () => {
+//     const thunkAction = function (dispatch) {
 
-    }
-}
+//     }
+// }

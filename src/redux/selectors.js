@@ -32,7 +32,6 @@ export const filterDepartures = createSelector(
             return elements.body.departure
         } else {
             return elements.body.departure.filter(elem => {
-                console.log(elem)
                 return elem['airportToID.city_en'] === text ||
                     elem.airline.en.name === text ||
                     elem.codeShareData[0].codeShare === text
