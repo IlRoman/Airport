@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Main from './main/Main'
-import { useLocation, useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFlightsList } from '../redux/actions'
 import { filterArrivals, filterDepartures } from '../redux/selectors'
@@ -13,7 +13,6 @@ const SearchField = ({ flightsListArrivals, flightsListDepartures, getFlightsLis
     }, [])
 
     const history = useHistory()
-    const location = useLocation()
     const { direction, search } = useParams();
 
     useEffect(() => {
