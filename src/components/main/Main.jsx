@@ -10,13 +10,6 @@ const Main = ({ flightsListArrivals, flightsListDepartures }) => {
     const searchArrivals = (text) => {
         if (!flightsListArrivals) return '';
 
-        // for (let i = 0; i < flightsListArrivals.length; i++) {
-        //     if (text !== flightsListArrivals[i]['airportFromID.city_en'] &&
-        //         flightsListArrivals[i].airline.en.name !== text &&
-        //         flightsListArrivals[i].codeShareData[0].codeShare !== text)
-        //         console.log('no results')
-        // }
-
         if (!text) {
             return flightsListArrivals
         } else {
@@ -30,14 +23,6 @@ const Main = ({ flightsListArrivals, flightsListDepartures }) => {
 
     const searchDepartures = (text) => {
         if (!flightsListDepartures) return '';
-
-        // for (let i = 0; i < flightsListDepartures.length; i++) {
-        //     if (flightsListDepartures[i]['airportToID.city_en'] !== text &&
-        //         flightsListDepartures[i].airline.en.name !== text &&
-        //         flightsListDepartures[i].codeShareData[0].codeShare !== text) {
-        //         console.log('no results')
-        //     }
-        // }
 
         if (!text) {
             return flightsListDepartures
