@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import Main from './main/Main'
 import { useLocation, useParams, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getFlightsList, getText } from '../redux/actions'
-import { filterArrivals, filterDepartures, textSelector } from '../redux/selectors'
+import { getFlightsList } from '../redux/actions'
+import { filterArrivals, filterDepartures } from '../redux/selectors'
 
-const SearchField = ({ flightsListArrivals, filterDepartures, getText, getFlightsList }) => {
+const SearchField = ({ flightsListArrivals, flightsListDepartures, getFlightsList }) => {
     const [text, setText] = useState('');
 
     useEffect(() => {
@@ -27,18 +27,15 @@ const SearchField = ({ flightsListArrivals, filterDepartures, getText, getFlight
     };
 
     const onSubmit = () => {
-        getText(text)
         if (search === text) {
             return;
-        } else if (search !== text) {
-            setText('')
-            // вернуться на одну страницу назад
-            // затем запустить хистори
-        }
-
-        text ?
-            history.push(`${location.pathname}/${text}`) :
+        } if (text) {
+            history.push(`/${direction}/${text}`)
+            console.log(direction)
+            return
+        } if (!text) {
             history.push(`/${direction}`);
+        }
     };
 
     return (
@@ -66,8 +63,7 @@ const SearchField = ({ flightsListArrivals, filterDepartures, getText, getFlight
             <Main
                 getFlightsList={getFlightsList}
                 flightsListArrivals={flightsListArrivals}
-                filterDepartures={filterDepartures}
-                text={text ? text : ''}
+                flightsListDepartures={flightsListDepartures}
             />
         </div>
     )
@@ -76,14 +72,12 @@ const SearchField = ({ flightsListArrivals, filterDepartures, getText, getFlight
 const mapState = state => {
     return {
         flightsListArrivals: filterArrivals(state),
-        filterDepartures: filterDepartures(state),
-        text: textSelector(state),
+        flightsListDepartures: filterDepartures(state),
     }
 }
 
 const mapDispatch = {
     getFlightsList,
-    getText,
 }
 
 export default connect(mapState, mapDispatch)(SearchField)

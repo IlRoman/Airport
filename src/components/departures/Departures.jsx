@@ -1,24 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { getPicture, getTerminalLogo } from '../../../functions'
-import './arrivals.scss'
+import { getPicture, getTerminalLogo } from '../../functions'
+import './departures.scss'
 
-const Arrivals = ({ flightsList }) => {
+const Departures = ({ flightsList, search }) => {
 
     const getTime = (date) => {
         return `${date.split('T')[1].split(':')[0]}:${date.split('T')[1].split(':')[1]}`
     }
 
-    const showArrivals = () => {
-        if (flightsList === '') return <tr><td>NO RESULTS</td></tr>
+    const showDepartures = () => {
+        if (!flightsList.length) return <tr><td>NO RESULTS</td></tr>
+
         let arr = Array(flightsList.length).fill('0')
         return (
             arr.map((element, index) => {
                 return (
                     <tr key={Math.random()}>
                         <td>{getTerminalLogo(flightsList[index].term)}</td>
-                        <td>{getTime(flightsList[index].timeLandCalc)}</td>
-                        <td>{flightsList[index]['airportFromID.city_en']}</td>
+                        <td>{getTime(flightsList[index].timeToStand)}</td>
+                        <td>{flightsList[index]['airportToID.city_en']}</td>
                         <td>{flightsList[index].status === 'CX'
                             ? 'Cancelled'
                             : flightsList[index].status
@@ -38,18 +39,18 @@ const Arrivals = ({ flightsList }) => {
     }
 
     return (
-        <div className="main">
+        <div>
             <div className="container">
-                <Link to="/arrivals">
-                    <button className="btn active btn-arrivals">
-                        <i className="fas fa-plane-arrival"></i>
-                        <span className="nearIcon">Arrivals</span>
-                    </button>
-                </Link>
-                <Link to="/departures">
-                    <button className="btn disabled btn-departures">
+                <Link to={`/departures/${search ? search : ''}`}>
+                    <button className="btn active btn-departures">
                         <i className="fas fa-plane-departure"></i>
                         <span className="nearIcon">Departures</span>
+                    </button>
+                </Link>
+                <Link to={`/arrivals/${search ? search : ''}`}>
+                    <button className="btn disabled btn-arrivals">
+                        <i className="fas fa-plane-arrival"></i>
+                        <span className="nearIcon">Arrivals</span>
                     </button>
                 </Link>
             </div>
@@ -66,7 +67,7 @@ const Arrivals = ({ flightsList }) => {
                 </thead>
                 <tbody>
                     {flightsList
-                        ? showArrivals()
+                        ? showDepartures()
                         : <tr><td>NO RESULTS</td></tr>}
                 </tbody>
             </table>
@@ -74,4 +75,4 @@ const Arrivals = ({ flightsList }) => {
     )
 }
 
-export default Arrivals;
+export default Departures;
