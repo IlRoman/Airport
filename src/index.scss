@@ -25,6 +25,7 @@ body {
   width: 600px;
   border: none;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .btn-arrivals {
@@ -45,7 +46,6 @@ body {
 .disabled {
   background: #1eb7ee;
   color: white;
-  cursor: pointer;
 }
 
 .link {

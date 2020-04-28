@@ -41,16 +41,16 @@ const Arrivals = ({ flightsList, search }) => {
     return (
         <div className="main">
             <div className="container">
-                <Link to={`/arrivals/${search ? search : ''}`}>
-                    <button className="btn active btn-arrivals">
-                        <i className="fas fa-plane-arrival"></i>
-                        <span className="nearIcon">Arrivals</span>
-                    </button>
-                </Link>
                 <Link to={`/departures/${search ? search : ''}`}>
                     <button className="btn disabled btn-departures">
                         <i className="fas fa-plane-departure"></i>
                         <span className="nearIcon">Departures</span>
+                    </button>
+                </Link>
+                <Link to={`/arrivals/${search ? search : ''}`}>
+                    <button className="btn active btn-arrivals">
+                        <i className="fas fa-plane-arrival"></i>
+                        <span className="nearIcon">Arrivals</span>
                     </button>
                 </Link>
             </div>
