@@ -39,13 +39,13 @@ const SearchField = ({ flightsListArrivals, flightsListDepartures, getFlightsLis
 
     return (
         <div className="page">
-            <div className="search-and-button">
-                <div id="title">SEARCH FLIGHT</div>
-                <div className="search-area">
-                    <div id="input-area">
+            <div className="search-container">
+                <div className="search-container__title">SEARCH FLIGHT</div>
+                <div className="search-container__text-area">
+                    <div className="search-container__input-area">
                         <i className="fas fa-search"></i>
                         <input
-                            id="search-area__input"
+                            className="search-container__input"
                             type="text"
                             name="text"
                             placeholder={`airline, destination or flight#`}
@@ -54,7 +54,7 @@ const SearchField = ({ flightsListArrivals, flightsListDepartures, getFlightsLis
                         />
                     </div>
                     <button
-                        id="search-button"
+                        className="search-container__button"
                         onClick={onSubmit}
                     >SEARCH</button>
                 </div>

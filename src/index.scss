@@ -26,6 +26,7 @@ body {
   border: none;
   font-size: 24px;
   cursor: pointer;
+  outline: none;
 }
 
 .btn-arrivals {
@@ -83,9 +84,7 @@ tr:nth-child(odd) {
   background-color: rgba(0, 102, 135, 0.1);
 }
 
-.terminal-a {
-  color: #63c745;
-  border: 1px solid #63c745;
+.terminal {
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -93,29 +92,27 @@ tr:nth-child(odd) {
   display: inline-block;
   line-height: 35px;
   font-size: 22px;
+}
+
+.terminal-a {
+  color: #63c745;
+  border: 1px solid #63c745;
 }
 
 .terminal-d {
   border: 1px solid #1eb7ee;
   color: #1eb7ee;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-weight: 700;
-  display: inline-block;
-  line-height: 35px;
-  font-size: 22px;
-}
-
-.logo {
-  display: block;
-  width: 63px;
-  height: 37px;
-  margin-right: 5px;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &__logo {
+    display: block;
+    width: 63px;
+    height: 37px;
+    margin-right: 5px;
+  }
 }

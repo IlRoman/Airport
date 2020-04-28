@@ -26,8 +26,8 @@ export const getPicture = (airline) => {
 export const getTerminalLogo = (name) => {
     switch (name) {
         case 'A':
-            return <span className="terminal-a">{name}</span>
+            return <span className="terminal terminal-a">{name}</span>
         case 'D':
-            return <span className="terminal-d">{name}</span>
+            return <span className="terminal terminal-d">{name}</span>
     }
 }

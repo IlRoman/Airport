@@ -26,7 +26,7 @@ const Departures = ({ flightsList, search }) => {
                         }</td>
                         <td className="logo-container">
                             <img
-                                className="logo"
+                                className="logo-container__logo"
                                 src={getPicture(flightsList[index].airline.en.name)
                                 }></img>
                             <div>{flightsList[index].airline.en.name}</div>
@@ -44,13 +44,13 @@ const Departures = ({ flightsList, search }) => {
                 <Link to={`/arrivals/${search ? search : ''}`}>
                     <button className="btn disabled btn-arrivals">
                         <i className="fas fa-plane-arrival"></i>
-                        <span className="nearIcon">Arrivals</span>
+                        <span className="button-name">Arrivals</span>
                     </button>
                 </Link>
                 <Link to={`/departures/${search ? search : ''}`}>
                     <button className="btn active btn-departures">
                         <i className="fas fa-plane-departure"></i>
-                        <span className="nearIcon">Departures</span>
+                        <span className="button-name">Departures</span>
                     </button>
                 </Link>
             </div>
