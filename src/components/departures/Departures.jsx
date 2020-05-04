@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { getPicture, getTerminalLogo } from '../../functions'
+import { getTerminalLogo } from '../../functions'
 import './departures.scss'
 
 const Departures = ({ flightsList, search }) => {
@@ -27,8 +27,8 @@ const Departures = ({ flightsList, search }) => {
                         <td className="logo-container">
                             <img
                                 className="logo-container__logo"
-                                src={getPicture(flightsList[index].airline.en.name)
-                                }></img>
+                                src={`https://api.iev.aero${flightsList[index].logo}`}>
+                            </img>
                             <div>{flightsList[index].airline.en.name}</div>
                         </td>
                         <td>{flightsList[index].codeShareData[0].codeShare}</td>
