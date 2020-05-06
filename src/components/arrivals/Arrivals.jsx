@@ -25,10 +25,12 @@ const Arrivals = ({ flightsList, search }) => {
                             : flightsList[index].status
                         }</td>
                         <td className="logo-container">
-                            <img
-                                className="logo-container__logo"
-                                src={`https://api.iev.aero${flightsList[index].logo}`}
-                            ></img>
+                            {flightsList[index].hasOwnProperty('logo') &&
+                                <img
+                                    className="logo-container__logo"
+                                    src={`https://api.iev.aero${flightsList[index].logo}`}
+                                ></img>
+                            }
                             <div>{(flightsList[index]).hasOwnProperty('airline') &&
                                 flightsList[index].airline.en.name
                             }</div>
