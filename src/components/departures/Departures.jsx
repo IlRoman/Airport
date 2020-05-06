@@ -29,9 +29,9 @@ const Departures = ({ flightsList, search }) => {
                                 className="logo-container__logo"
                                 src={`https://api.iev.aero${flightsList[index].logo}`}>
                             </img>
-                            {/* <div>{(flightsList[index]).hasOwnProperty(airline.en.name) &&
+                            <div>{(flightsList[index]).hasOwnProperty('airline') &&
                                 flightsList[index].airline.en.name
-                            }</div> */}
+                            }</div>
                         </td>
                         <td>{flightsList[index].codeShareData[0].codeShare}</td>
                     </tr>
