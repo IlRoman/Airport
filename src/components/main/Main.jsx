@@ -9,6 +9,9 @@ const Main = ({ flightsListArrivals, flightsListDepartures }) => {
 
     const searchArrivals = (text) => {
         if (!flightsListArrivals) return '';
+        for (let i = 0; i < flightsListArrivals.length; i++) {
+            if (!flightsListArrivals[i].hasOwnProperty('airline')) return
+        }
 
         if (!text) {
             return flightsListArrivals
@@ -28,9 +31,13 @@ const Main = ({ flightsListArrivals, flightsListDepartures }) => {
             return flightsListDepartures
         } else {
             return flightsListDepartures.filter(elem => {
-                return elem['airportToID.city_en'] === text ||
-                    elem.airline.en.name === text ||
-                    elem.codeShareData[0].codeShare === text
+                if (elem.hasOwnProperty('airline')) {
+                    return (
+                        elem['airportToID.city_en'] === text ||
+                        elem.airline.en.name === text ||
+                        elem.codeShareData[0].codeShare === text
+                    )
+                }
             })
         }
     }

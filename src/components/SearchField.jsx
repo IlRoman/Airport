@@ -30,7 +30,6 @@ const SearchField = ({ flightsListArrivals, flightsListDepartures, getFlightsLis
             return;
         } if (text) {
             history.push(`/${direction}/${text}`)
-            console.log(direction)
             return
         } if (!text) {
             history.push(`/${direction}`);
